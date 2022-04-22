@@ -1,0 +1,74 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local BasedHubMadeByBaseplate = Instance.new("TextLabel")
+local AllSkinsInGame = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+
+Main.Name = "Main"
+Main.Parent = ScreenGui
+Main.BackgroundColor3 = Color3.fromRGB(75, 67, 67)
+Main.Position = UDim2.new(0.535471857, 0, 0.561727583, 0)
+Main.Size = UDim2.new(0, 441, 0, 259)
+Main.Active = true
+Main.Draggable = true
+
+BasedHubMadeByBaseplate.Name = "Based Hub | Made By Baseplate"
+BasedHubMadeByBaseplate.Parent = Main
+BasedHubMadeByBaseplate.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
+BasedHubMadeByBaseplate.Size = UDim2.new(0, 439, 0, 45)
+BasedHubMadeByBaseplate.Font = Enum.Font.SourceSans
+BasedHubMadeByBaseplate.Text = "Based Hub | Made By Baseplate"
+BasedHubMadeByBaseplate.TextColor3 = Color3.fromRGB(0, 0, 0)
+BasedHubMadeByBaseplate.TextSize = 40.000
+
+AllSkinsInGame.Name = "AllSkinsInGame"
+AllSkinsInGame.Parent = Main
+AllSkinsInGame.BackgroundColor3 = Color3.fromRGB(93, 93, 93)
+AllSkinsInGame.Position = UDim2.new(0, 0, 0.463320464, 0)
+AllSkinsInGame.Size = UDim2.new(0, 189, 0, 57)
+AllSkinsInGame.Font = Enum.Font.SourceSans
+AllSkinsInGame.Text = "All Skins (In-Game)"
+AllSkinsInGame.TextColor3 = Color3.fromRGB(0, 0, 0)
+AllSkinsInGame.TextSize = 26.000
+AllSkinsInGame.MouseButton1Down:Connect(function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Basenallity/ArsenalTesting/main/Testing%20Script"))();
+end)
+
+-- Scripts:
+
+local function FJBF_fake_script() -- BasedHubMadeByBaseplate.ITSRAINBOW 
+	local script = Instance.new('Script', BasedHubMadeByBaseplate)
+
+	local colorTable = {
+		Color3.fromRGB(254,0,0);
+		Color3.fromRGB(255,127,0);
+		Color3.fromRGB(255,221,1);
+		Color3.fromRGB(0,200,0);
+		Color3.fromRGB(0,160,199);
+		Color3.fromRGB(0,55,230);
+		Color3.fromRGB(129,16,210)
+	}
+	local info = TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0)
+	script.Parent.TextColor3 = colorTable[1]
+	i = 1
+	while true do
+		local tween = game:GetService("TweenService"):Create(script.Parent, info, {TextColor3 = colorTable[i]})
+		tween:Play()
+		repeat wait() until tween.Completed
+		wait(0.1)
+		if i == #colorTable then
+			i = 1
+		else
+			i = i + 1
+		end
+	end
+end
+coroutine.wrap(FJBF_fake_script)()
